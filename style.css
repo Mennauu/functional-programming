@@ -1,0 +1,84 @@
+html { font-size: 16px; }
+
+body {
+  background-color: #f1f1f1;
+  font-family: 'Nunito Sans', sans-serif;
+  padding: 50px 50px;
+  text-align: center;
+}
+
+svg {
+  background-color: #fff;
+  width: 1100px;
+  height: 550px;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.wrapper {
+  width: 1980px;
+  margin: 0 auto;
+  position: relative;
+  margin-left: -100px;
+}
+
+.left, .right {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.left {
+  transform: rotate(270deg);
+  position: absolute;
+  top: 370px;
+  left: 312px;
+}
+
+.right {
+ width: 330px;
+ overflow: hidden;
+ background-color: #fff;
+ margin-left: 125px;
+ margin-top: 30px;
+ border-radius: 10px;
+ box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+ text-align: left;
+ padding: 30px 40px;
+ font-size: 16px;
+ position: absolute;
+ right: 0;
+ top: 80px;;
+}
+
+.right i {
+  padding-left: 10px;
+}
+
+.text {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.line {
+  fill: none;
+  stroke: #2FB0F0;
+  stroke-width: 3;
+}
+
+.line2 {
+  fill: none;
+  stroke: #FE8844;
+  stroke-width: 3;
+}
+
+.dot, .square {
+  fill: #2FB0F0;
+  stroke: #fff;
+}
+
+.square {
+  width: 10px;
+  height: 10px;
+}
