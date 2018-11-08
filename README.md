@@ -119,7 +119,7 @@ So, I helped out with a lot of thinking and doing research to retrieve the data 
 
 1. First, I sketched a quick design to show the data in a line graph. I figured lines would be easliy readable and a good starting point with D3.
 
-![data sketch](datavisualisatie.png)
+![data sketch](/images/datavisualisatie.png)
 
 2. I read a bit of the documentation of the D3 library and afterwards look for examples. I quickly find a lot of helpful articles which explain D3 quite well. I create a index.html file and implement the D3 library.
 
@@ -187,7 +187,7 @@ svg.selectAll(".dot")
 
 8. After cleaning up and making some design changes, we get out first result!
 
-![datavisualisatie](datavisualisatie_in_d3.png)
+![datavisualisatie](/images/datavisualisatie_in_d3.png)
 
 ##### But wait, that graph doesn't make sense!
 
@@ -214,7 +214,7 @@ svg.selectAll(".bar")
 
 3. Lets change the title and metadata of the chart. What do we get now?
 
-![datavisualisatie bars](data_bar.png)
+![datavisualisatie bars](/images/data_bar.png)
 
 4. Good, and easier to read! The results are also based on 20000 books now. There are two things that we can change. Place the bars next to eachother and add the specific amount on top of the bar, because you kind of have to make an estimation right now. Lets try to place them next to eachother first. Turns out we can just move one of the bars a little to the right with transform. since the bars are 18.4 pixels wide, we use that amount.
 
@@ -230,4 +230,4 @@ let x = d3.scaleBand().range([0, width]).padding(.3)
 
 6. The result!
 
-![datavisualisatie bars done](data_bar_finished.png)
+![datavisualisatie bars done](/images/data_bar_finished.png)
