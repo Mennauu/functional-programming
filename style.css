@@ -61,24 +61,11 @@ svg {
   font-weight: bold;
 }
 
-.line {
-  fill: none;
-  stroke: #2FB0F0;
-  stroke-width: 3;
-}
-
-.line2 {
-  fill: none;
-  stroke: #FE8844;
-  stroke-width: 3;
-}
-
-.dot, .square {
+.bar {
   fill: #2FB0F0;
-  stroke: #fff;
 }
 
-.square {
-  width: 10px;
-  height: 10px;
+.bar2 {
+  fill: #FE8844;
+  left: 20px;
 }
