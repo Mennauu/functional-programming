@@ -115,6 +115,8 @@ EDIT: Gijs added a delay of one second after each request, which allowed us to g
 
 So, I helped out with a lot of thinking and doing research to retrieve the data that I want, but I didn't write much of the code myself. Time to play with the data in D3 and show my own powers.
 
+##### First D3 experience
+
 1. First, I sketched a quick design to show the data in a line graph. I figured lines would be easliy readable and a good starting point with D3.
 
 ![data sketch](datavisualisatie.png)
@@ -186,3 +188,46 @@ svg.selectAll(".dot")
 8. After cleaning up and making some design changes, we get out first result!
 
 ![datavisualisatie](datavisualisatie_in_d3.png)
+
+##### But wait, that graph doesn't make sense!
+
+You're right. It doesn't! The data isn't correct and neither is the amount of english books. Heck, how can you have more english books translated to dutch books than english books in total? Turns out that not every book has an original language set. If it's not translated at all, it will only define the language variable, and not original language. So I first changed the data code to do some more checks on retrieving the english books. It's solid now.
+
+The next thing that doesn't make sense is the use of lines. It's quite hard to understand and its lying to us. Because it's endpoint go from year to year. If we want to know the amount of books from 2013 and 6 months in, the line will give us an amount, but that amount may be wrong. So... now what? In what form can we better show the data. I looked through a page with a lot of different charts, and then I see it, clear as hell: a bar chart with 2 bars. Each bar representing the amount of books (translated and just english)
+
+1. Basically, I have to adapt my current code and change the lines to bars. So, I first set a new xAsis range. I remove scaleTime and use scaleBand instead. I also add some padding.
+
+```javascript
+let x = d3.scaleBand().range([0, width]).padding(.1)
+```
+2. I proceed to remove the line variables and the circle variable and create the bars. We add a class so we can style it. Also, I cut the width in half, so we have room for 2 bars. Because of lack of time, I just duplicated the code beneath for the other bar and only changed d.english to d.englishToDutch.
+```javascript
+svg.selectAll(".bar")
+  .data(data)
+  .enter().append("rect")
+  .attr("class", "bar")
+  .attr("x", function(d) { return x(d.year)})
+  .attr("y", function(d) { return y(d.english)})
+  .attr("width", x.bandwidth() / 2)
+  .attr("height", function(d) { return height - y(d.english) })
+```
+
+3. Lets change the title and metadata of the chart. What do we get now?
+
+![datavisualisatie bars](data_bar.png)
+
+4. Good, and easier to read! The results are also based on 20000 books now. There are two things that we can change. Place the bars next to eachother and add the specific amount on top of the bar, because you kind of have to make an estimation right now. Lets try to place them next to eachother first. Turns out we can just move one of the bars a little to the right with transform. since the bars are 18.4 pixels wide, we use that amount.
+
+```javascript
+.attr("transform", "translate(18.4)")
+```
+
+5. The bars are next to eachother now, which only gives little room of seperation to the next two bars, so we have to add some more padding.
+
+```javascript
+let x = d3.scaleBand().range([0, width]).padding(.3)
+```
+
+6. The result!
+
+![datavisualisatie bars done](data_bar_finished.png)

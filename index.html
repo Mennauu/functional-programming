@@ -8,14 +8,14 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1>Verschil tussen Engelse boeken die vertaald worden naar<br> het Nederlands en niet vertaald worden (van 2000 tot 2018)</h1>
+      <h1>Amount of english books and english books<br> that are translated to dutch (from 2000 till 2018)</h1>
       <div class="left">
-        <span>Aantal boeken</span>
+        <span>Amount of books</span>
       </div>
       <svg></svg>
       <div class="right">
-        <span>Vertaald van Engels naar Nederlands <i style="color: #FE8844;">-----</i></span><br><br>
-        <span>Engelse zonder vertaling <i style="color: #2FB0F0;">--•--</i></span>
+        <span>English books translated to dutch<i style="background-color: #FE8844;"></i></span><br><br>
+        <span>English books<i style="background-color: #2FB0F0;"></i></span>
       </div>
     </div>
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -31,7 +31,7 @@
       height = 550 - margin.top - margin.bottom
 
       //  Set the ranges
-      let x = d3.scaleBand().range([0, width]).padding(.1)
+      let x = d3.scaleBand().range([0, width]).padding(.3)
       let y = d3.scaleLinear().range([height, 0])
 
       // Add SVG to page
@@ -71,6 +71,7 @@
         	.attr("class", "bar")
         	.attr("x", function(d) { return x(d.year)})
         	.attr("y", function(d) { return y(d.english)})
+          .attr("transform", "translate(18.4)")
         	.attr("width", x.bandwidth() / 2)
         	.attr("height", function(d) { return height - y(d.english) })
 
