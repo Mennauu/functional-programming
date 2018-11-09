@@ -2,6 +2,21 @@
 
 **Since 1986, a great deal of attention has been given to the English language in our country. English was then obligated in group 7 and 8 of primary school. In the Dutch media we also encountered the English language more and more, especially on television and radio. A recent study by language education agency EF Education shows that Dutch people have better control of the English language than other countries that do not use English as their mother tongue. In general, Dutch people have become good at English and many English speaking people moved to The Netherlands. So does it impact the translations of English books into Dutch?**
 
+## Table of Contents
+
+- [Main question](#main-question)
+- [Hypothesis](#hypothesis)
+- [Required variables](#required-variables)
+- [Research](#research)
+- [Retrieve data from the OBA API](#retrieve-data-from-the-oba-api)
+- [Available data](#available-data)
+- [Searching through data](#searching-through-data)
+- [Visualize data](#visualize-data)
+- [First D3 experience](#first-d3-experience)
+- [But wait, that graph doesn't make sense!](#but-wait,-that-graph-doesn't-make-sense!)
+- [Conclusion](#conclusion)
+- [Online datavisualisation](#online-datavisualisation)
+
 ## Main question
 What is the impact of better control of the English language on translations of English books into Dutch?
 
@@ -10,7 +25,7 @@ Better control of the English language ensures that fewer books are translated f
 
 ### Required variables
 * Original language
-* Languages
+* Language
 * Publication year
 * Format
 
@@ -94,9 +109,9 @@ fs.writeFile ("results.json", JSON.stringify(translatedBooks), function(err) {
 })
 ```
 
-5. We still get a huge list with data. We only need the AMOUNT (length) of books and translated books per publication year. Also, we don't want to mess up our graph because of one book that was published in 1860 or something like that. We want to search between 1986 and 2018. Gijs wrote a for loop for this where he pushed all the books that belonged to a year into two arrays (because there are two variables, books and translatedBooks). He then pushed all the results back to one array, with the length of books and translatedBooks beloning to a year. So all credits go to Gijs for this.
+5. We still get a huge list with data. We only need the AMOUNT (length) of books and translated books per publication year. Also, we don't want to mess up our graph because of one book that was published in 1860 or something like that. We want to search between 2000 and 2018. Gijs wrote a for loop for this where he pushed all the books that belonged to a year into two arrays (because there are two variables, books and translatedBooks). He then pushed all the results back to one array, with the length of books and translatedBooks beloning to a year. So all credits go to Gijs for this.
 
-5. Lets take a look at the JSON file (I made it shorter just for this readme, in reality it's between 1986 and 2018). We retrieved the year, the amount of english books it has, and the amount of english books that are translated to dutch.
+5. Lets take a look at the JSON file (I made it shorter just for this readme, in reality it's between 2000 and 2018). We retrieved the year, the amount of english books it has, and the amount of english books that are translated to dutch.
 
 ```json
 [
@@ -111,11 +126,11 @@ fs.writeFile ("results.json", JSON.stringify(translatedBooks), function(err) {
 
 EDIT: Gijs added a delay of one second after each request, which allowed us to get 200 pages of results. That's data based on 20000 books. NICE!
 
-#### Visualize data
+### Visualize data
 
 So, I helped out with a lot of thinking and doing research to retrieve the data that I want, but I didn't write much of the code myself. Time to play with the data in D3 and show my own powers.
 
-##### First D3 experience
+#### First D3 experience
 
 1. First, I sketched a quick design to show the data in a line graph. I figured lines would be easliy readable and a good starting point with D3.
 
@@ -189,7 +204,7 @@ svg.selectAll(".dot")
 
 ![datavisualisatie](/images/datavisualisatie_in_d3.png)
 
-##### But wait, that graph doesn't make sense!
+#### But wait, that graph doesn't make sense!
 
 You're right. It doesn't! The data isn't correct and neither is the amount of english books. Heck, how can you have more english books translated to dutch books than english books in total? Turns out that not every book has an original language set. If it's not translated at all, it will only define the language variable, and not original language. So I first changed the data code to do some more checks on retrieving the english books. It's solid now.
 
@@ -231,3 +246,12 @@ let x = d3.scaleBand().range([0, width]).padding(.3)
 6. The result!
 
 ![datavisualisatie bars done](/images/data_bar_finished.png)
+
+## Conclusion
+It seems like that a general better knowledge of the english language in our country doesn't impact the amount of english books that are being translated to dutch. It's always in line with the amount of english books. You can see that the bars are following the same pattern, every year.
+
+Please note that the results of this chart are based on 20000 random books. The results could be different if we would be able to widen the amount of books to all books, around 410000.
+
+### Online datavisualisation
+
+You can find the D3 datavisualisation online here:
