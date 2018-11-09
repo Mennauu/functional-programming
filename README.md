@@ -1,6 +1,6 @@
-# Impact of better control of the English language in the Netherlands on translations of English books into Dutch
+# Impact of better control of the English language in the Netherlands on the amount of translations of English books into Dutch
 
-**Since 1986, a great deal of attention has been given to the English language in our country. English was then obligated in group 7 and 8 of primary school. In the Dutch media we also encountered the English language more and more, especially on television and radio. A recent study by language education agency EF Education shows that Dutch people have better control of the English language than other countries that do not use English as their mother tongue. In general, Dutch people have become good at English and many English speaking people moved to The Netherlands. So does it impact the translations of English books into Dutch?**
+**Since 1986, a great deal of attention has been given to the English language in our country. English was then obligated in group 7 and 8 of primary school. In the Dutch media we also encountered the English language more and more, especially on television and radio. A recent study by language education agency EF Education shows that Dutch people have better control of the English language than other countries that do not use English as their mother tongue. In general, Dutch people have become good at English and many English speaking people moved to The Netherlands. So does it impact the amount of translations of English books into Dutch?**
 
 ## Table of Contents
 
@@ -18,10 +18,10 @@
   - [Online datavisualisation](#online-datavisualisation)
 
 ## Main question
-What is the impact of better control of the English language on translations of English books into Dutch?
+What is the impact of better control of the English language on the amount of translations of English books into Dutch?
 
 ### Hypothesis
-Better control of the English language ensures that fewer books are translated from English into Dutch
+Better control of the English language of the years ensures that fewer books are translated from English into Dutch
 
 ### Required variables
 * Original language
@@ -76,7 +76,7 @@ const search = {
 }
 ```
 
-2. Alright, we got some data. Now we have to filter out all the data that we don't need. So we map through the (retrieved) data and format it to data that we need and afterwards can easily access. Dennis came up with the idea to format it like this, Gijs wrote the code and I cleaned it up and resolved some errors, because it was quite dirty at first.
+2. Alright, we got some data. Now we have to filter out all the data that we don't need. So we map through the (retrieved) data and format it to data that we need and afterwards can easily access. Dennis came up with the idea to format it like this, Gijs wrote the code and I cleaned it up and resolved some errors, because it was quite dirty at first (might still be, ha)
 
 ```javascript
 let result = response.data.map(book => {
@@ -109,7 +109,7 @@ fs.writeFile ("results.json", JSON.stringify(translatedBooks), function(err) {
 })
 ```
 
-5. We still get a huge list with data. We only need the AMOUNT (length) of books and translated books per publication year. Also, we don't want to mess up our graph because of one book that was published in 1860 or something like that. We want to search between 2000 and 2018. Gijs wrote a for loop for this where he pushed all the books that belonged to a year into two arrays (because there are two variables, books and translatedBooks). He then pushed all the results back to one array, with the length of books and translatedBooks beloning to a year. So all credits go to Gijs for this.
+5. We still get a huge list with data. We only need the AMOUNT (length) of books and translated books per publication year. Also, we don't want to mess up our graph because of one book that was published in 1860 or something like that. We want to search between 2000 and 2018. Gijs wrote a for loop for this where he pushed all the books that belonged to a year into two arrays (because there are two variables, books and translatedBooks). He then pushed all the results back to one array, with the length of books and translatedBooks belonging to a year. So all credits go to Gijs for this.
 
 5. Lets take a look at the JSON file (I made it shorter just for this readme, in reality it's between 2000 and 2018). We retrieved the year, the amount of english books it has, and the amount of english books that are translated to dutch.
 
@@ -122,9 +122,9 @@ fs.writeFile ("results.json", JSON.stringify(translatedBooks), function(err) {
 ]
 ```
 
-5. There is one last step... We want to search through ALL the books. However, we are limited by the API, it only shows 20 results. Gijs and me looking into retrieving more results by pagination. Lets say we have 200 results, that would mean we get 10 pages of results. We could then combine all results and show it on one page. Folkert and Dennis also thought about this and wrote some code for it, I implemented it and it worked. All results were combined, cool. We are still limited though, because after 29 pages of results, the API times you out. Anyhow, 580 results is better than 20.
+6. There is one last step... We want to search through ALL the books. However, we are limited by the API, it only shows 20 results. Gijs and me looking into retrieving more results by pagination. Lets say we have 200 results, that would mean we get 10 pages of results. We could then combine all results and show it on one page. Folkert and Dennis also thought about this and wrote some code for it, I implemented it and it worked. All results were combined, cool. We are still limited though, because after 29 pages of results, the API times you out. Anyhow, 580 results is better than 20.
 
-EDIT: Gijs added a delay of one second after each request, which allowed us to get 200 pages of results. That's data based on 20000 books. NICE!
+EDIT: Gijs added a delay of one second after each request, which allowed us to get 200 pages of results. That's data based on 20000 books. BETTER!
 
 ### Visualize data
 
@@ -136,7 +136,7 @@ So, I helped out with a lot of thinking and doing research to retrieve the data 
 
 ![data sketch](/images/datavisualisatie.png)
 
-2. I read a bit of the documentation of the D3 library and afterwards look for examples. I quickly find a lot of helpful articles which explain D3 quite well. I create a index.html file and implement the D3 library.
+2. I read a bit of the documentation of the D3 library and afterwards looked for examples. I quickly find a lot of helpful articles which explain D3 quite well. I create an index.html file and implement the D3 library.
 
 3. I first want to set the dimensions of the graph and add some margins
 
@@ -158,7 +158,7 @@ let line = d3.line()
  .y(function(d) { return y(d.english) })
 ```
 
-5. We set the SVG and append it to svg and give it it's attributes. Now it's time to create a function where we will retrieve the data from the json file. In d3 it's really simple. We can use the code beneath to retrieve the data and use it in a function called draw
+5. We set the SVG and append it to the <svg> tag and give it it's attributes. Now it's time to create a function where we will retrieve the data from the JSON file. In d3 it's actually really simple. We can use the code beneath to retrieve the data and use it in a function called draw
 
 ```javascript
 d3.json("results.json", function(error, data) {
@@ -206,16 +206,16 @@ svg.selectAll(".dot")
 
 #### But wait, that graph doesn't make sense!
 
-You're right. It doesn't! The data isn't correct and neither is the amount of english books. Heck, how can you have more english books translated to dutch books than english books in total? Turns out that not every book has an original language set. If it's not translated at all, it will only define the language variable, and not original language. So I first changed the data code to do some more checks on retrieving the english books. It's solid now.
+You're right. It doesn't! The data isn't correct and neither is the amount of english books. Heck, how can you have more english books translated to dutch books than english books in total? Turns out that not every book has an original language set. If it's not translated at all, it will only define the language variable, and not the original language variable. So I first changed the data code to do some more checks on retrieving the english books. It's solid now.
 
-The next thing that doesn't make sense is the use of lines. It's quite hard to understand and its lying to us. Because it's endpoint go from year to year. If we want to know the amount of books from 2013 and 6 months in, the line will give us an amount, but that amount may be wrong. So... now what? In what form can we better show the data. I looked through a page with a lot of different charts, and then I see it, clear as hell: a bar chart with 2 bars. Each bar representing the amount of books (translated and just english)
+The next thing that doesn't make sense is the use of lines. It's hard to understand and it's lying to us, because the endpoints go from year to year. If we want to know the amount of books from 2013 and 6 months in, the line will give us an amount, but that amount may be wrong. So... now what? What kind of chart is better to show our data. I looked through a page with a lot of different charts and I compared them with the data I have. Turns out that a bar chart with 2 bars, each representing the amount of books (translated and just english), is the easiest to read in the case of the data that I have.
 
-1. Basically, I have to adapt my current code and change the lines to bars. So, I first set a new xAsis range. I remove scaleTime and use scaleBand instead. I also add some padding.
+1. Basically, I have to adapt my current code and change the lines to bars. So, I first set a new xAsis range, I remove scaleTime and use scaleBand, and remove extent and use map to go through the years instead. I also add some padding.
 
 ```javascript
 let x = d3.scaleBand().range([0, width]).padding(.1)
 ```
-2. I proceed to remove the line variables and the circle variable and create the bars. We add a class so we can style it. Also, I cut the width in half, so we have room for 2 bars. Because of lack of time, I just duplicated the code beneath for the other bar and only changed d.english to d.englishToDutch.
+2. I proceed to remove the line variables and the circle variable and create the bars. We add a class so we can style it. Also, I cut the width in half, so we have room for 2 bars. Because of lack of time, I just duplicated the code beneath for the other bar and only changed d.english to d.englishToDutch and gave it a different class name.
 ```javascript
 svg.selectAll(".bar")
   .data(data)
@@ -231,13 +231,13 @@ svg.selectAll(".bar")
 
 ![datavisualisatie bars](/images/data_bar.png)
 
-4. Good, and easier to read! The results are also based on 20000 books now. There are two things that we can change. Place the bars next to eachother and add the specific amount on top of the bar, because you kind of have to make an estimation right now. Lets try to place them next to eachother first. Turns out we can just move one of the bars a little to the right with transform. since the bars are 18.4 pixels wide, we use that amount.
+4. Good, and easier to read! The results are also based on 20000 books now. There are two things that we can change. Place the bars next to each other and add the specific amount on top of the bar, because you kind of have to make an estimation right now. Let's try to place them next to each other first. Turns out, we can just move one of the bars a little to the right with transform. since the bars are 18.4 pixels wide, we use that amount.
 
 ```javascript
 .attr("transform", "translate(18.4)")
 ```
 
-5. The bars are next to eachother now, which only gives little room of seperation to the next two bars, so we have to add some more padding.
+5. The bars are next to each other now, which only gives little room of seperation to the next two bars, so we have to add some more padding.
 
 ```javascript
 let x = d3.scaleBand().range([0, width]).padding(.3)
@@ -254,4 +254,4 @@ Please note that the results of this chart are based on 20000 random books. The 
 
 ### Online datavisualisation
 
-You can find the D3 datavisualisation online here:
+You can find the D3 datavisualisation online here: https://mennauu.github.io/functional-programming/
