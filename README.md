@@ -250,7 +250,7 @@ let x = d3.scaleBand().range([0, width]).padding(.3)
 ## Conclusion
 It seems like that a general better knowledge of the english language in our country doesn't impact the amount of english books that are being translated to dutch. It's always in line with the amount of english books. You can see that the bars are following the same pattern, every year.
 
-Please note that the results of this chart are based on 20000 random books. The results could be different if we would be able to widen the amount of books to all books, around 410000.
+*Please note that the results of this chart are based on 20000 random books. The results could be different if we would be able to widen the amount of books to all books, around 410000.*
 
 ### Online datavisualisation
 
