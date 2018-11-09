@@ -257,7 +257,7 @@ svg.selectAll("text.bar")
 
 7. The result!
 
-![datavisualisatie bars done](/images/data_bar_finished.png)
+![datavisualisatie bars finished](/images/data_bar_finished.png)
 
 ## Conclusion
 It seems like that a general better knowledge of the english language in our country doesn't impact the amount of english books that are being translated to dutch. It's always in line with the amount of english books. You can see that the bars are following the same pattern, every year.
