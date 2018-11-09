@@ -5,17 +5,17 @@
 ## Table of Contents
 
 - [Main question](#main-question)
-- [Hypothesis](#hypothesis)
-- [Required variables](#required-variables)
+  - [Hypothesis](#hypothesis)
+  - [Required variables](#required-variables)
 - [Research](#research)
-- [Retrieve data from the OBA API](#retrieve-data-from-the-oba-api)
-- [Available data](#available-data)
-- [Searching through data](#searching-through-data)
-- [Visualize data](#visualize-data)
-- [First D3 experience](#first-d3-experience)
-- [But wait, that graph doesn't make sense!](#but-wait,-that-graph-doesn't-make-sense!)
+  - [Retrieve data from the OBA API](#retrieve-data-from-the-oba-api)
+  - [Available data](#available-data)
+  - [Searching through data](#searching-through-data)
+  - [Visualize data](#visualize-data)
+  - [First D3 experience](#first-d3-experience)
+  - [But wait, that graph doesn't make sense!](#but-wait-that-graph-doesnt-make-sense)
 - [Conclusion](#conclusion)
-- [Online datavisualisation](#online-datavisualisation)
+  - [Online datavisualisation](#online-datavisualisation)
 
 ## Main question
 What is the impact of better control of the English language on translations of English books into Dutch?
