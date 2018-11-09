@@ -210,7 +210,7 @@ You're right. It doesn't! The data isn't correct and neither is the amount of en
 
 The next thing that doesn't make sense is the use of lines. It's hard to understand and it's lying to us, because the endpoints go from year to year. If we want to know the amount of books from 2013 and 6 months in, the line will give us an amount, but that amount may be wrong. So... now what? What kind of chart is better to show our data. I looked through a page with a lot of different charts and I compared them with the data I have. Turns out that a bar chart with 2 bars, each representing the amount of books (translated and just english), is the easiest to read in the case of the data that I have.
 
-1. Basically, I have to adapt my current code and change the lines to bars. So, I first set a new xAsis range, I remove scaleTime and use scaleBand, and remove extent and use map to go through the years instead. I also add some padding.
+1. Basically, I have to adapt my current code and change the lines to bars. So, I first set a new xAsis range, I remove scaleTime and use scaleBand, and remove extent and use map to go through the years instead to set the xAsis scale of range. I also add some padding.
 
 ```javascript
 let x = d3.scaleBand().range([0, width]).padding(.1)
