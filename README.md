@@ -130,6 +130,16 @@ EDIT: Gijs added a delay of one second after each request, which allowed us to g
 
 So, I helped out with a lot of thinking and doing research to retrieve the data that I want, but I didn't write much of the code myself. Time to play with the data in D3 and show my own powers.
 
+Used sources:
+* https://medium.freecodecamp.org/learn-to-create-a-line-chart-using-d3-js-4f43f1ee716b
+* https://bl.ocks.org/gordlea/27370d1eea8464b04538e6d8ced39e89
+* https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0
+* https://beta.observablehq.com/@mbostock/d3-bar-chart
+* http://bl.ocks.org/d3noob/8952219
+* https://bl.ocks.org/bricedev/0d95074b6d83a77dc3ad
+* https://stackoverflow.com/questions/39169948/grouped-bar-chart-from-json-data-instead-of-csv
+* http://bl.ocks.org/Jverma/887877fc5c2c2d99be10
+
 #### First D3 experience
 
 1. First, I sketched a quick design to show the data in a line graph. I figured lines would be easily readable and a good starting point with D3.
