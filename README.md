@@ -237,13 +237,25 @@ svg.selectAll(".bar")
 .attr("transform", "translate(" + x.bandwidth() / 2 + ")")
 ```
 
-5. The bars are next to each other now, which doesn't give a lot of breathing room to the next two bars, so we have to add some more padding.
+5. The bars are next to each other now, which doesn't give a lot of breathing room to the next two bars, so we have to add some more padding. I also made the graph a little bigger.
 
 ```javascript
 let x = d3.scaleBand().range([0, width]).padding(.3)
 ```
 
-6. The result!
+6. Lastly, we add the exact amount on top of the bars for each year.
+```javascript
+svg.selectAll("text.bar")
+  .data(data)
+.enter().append("text")
+  .attr("class", "bar")
+  .attr("text-anchor", "middle")
+  .attr("x", function(d) { return x(d.year) + x.bandwidth() - 12 })
+  .attr("y", function(d) { return y(d.english) - 5; })
+  .text(function(d) { return d.english; });
+```
+
+7. The result!
 
 ![datavisualisatie bars done](/images/data_bar_finished.png)
 
