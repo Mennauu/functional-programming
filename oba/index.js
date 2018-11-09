@@ -16,7 +16,7 @@ const client = new OBA({
 const search = {
   endpoint: 'search',
   query: {
-    q: 'Potter',
+    q: 'book',
     facet: 'Type(book)',
     refine: true,
     pagesize: 20
