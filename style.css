@@ -4,7 +4,6 @@ body {
   background-color: #f1f1f1;
   font-family: 'Nunito Sans', sans-serif;
   padding: 50px 50px;
-  text-align: center;
 }
 
 svg {
@@ -17,10 +16,9 @@ svg {
 }
 
 .wrapper {
-  width: 1980px;
-  margin: 0 auto;
+  width: 1300px;
   position: relative;
-  margin-left: -100px;
+  text-align: center;
 }
 
 .left, .right {
@@ -32,14 +30,14 @@ svg {
   transform: rotate(270deg);
   position: absolute;
   top: 370px;
-  left: 300px;
+  left: -40px;
 }
 
 .right {
  width: 330px;
  overflow: hidden;
  background-color: #fff;
- margin-left: 125px;
+ margin-right: -350px;
  margin-top: 30px;
  border-radius: 10px;
  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
@@ -48,7 +46,7 @@ svg {
  font-size: 16px;
  position: absolute;
  right: 0;
- top: 80px;;
+ top: 80px;
 }
 
 .right i {
