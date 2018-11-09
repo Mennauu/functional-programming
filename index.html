@@ -27,7 +27,7 @@
 
       // Set the dimensions and margins of the graph
       const margin = {top: 50, right: 50, bottom: 50, left: 50},
-      width = 1100- margin.left - margin.right,
+      width = 1400- margin.left - margin.right,
       height = 550 - margin.top - margin.bottom
 
       //  Set the ranges
@@ -67,13 +67,23 @@
         // add the bar
         svg.selectAll(".bar")
         	.data(data)
-        	.enter().append("rect")
+        .enter().append("rect")
         	.attr("class", "bar")
         	.attr("x", function(d) { return x(d.year)})
         	.attr("y", function(d) { return y(d.english)})
         	.attr("width", x.bandwidth() / 2)
         	.attr("height", function(d) { return height - y(d.english) })
           .attr("transform", "translate(" + x.bandwidth() / 2 + ")")
+
+        // add text to the bar
+        svg.selectAll("text.bar")
+          .data(data)
+        .enter().append("text")
+          .attr("class", "bar")
+          .attr("text-anchor", "middle")
+          .attr("x", function(d) { return x(d.year) + x.bandwidth() - 12 })
+          .attr("y", function(d) { return y(d.english) - 5; })
+          .text(function(d) { return d.english; });
 
         // add the second bar
         svg.selectAll(".bar2")
@@ -85,6 +95,15 @@
           .attr("width", x.bandwidth() / 2)
           .attr("height", function(d) { return height - y(d.englishToDutch) })
 
+        // add text to the second bar
+        svg.selectAll("text.bar2")
+          .data(data)
+        .enter().append("text")
+          .attr("class", "bar2")
+          .attr("text-anchor", "middle")
+          .attr("x", function(d) { return x(d.year) + 10 })
+          .attr("y", function(d) { return y(d.englishToDutch) - 5; })
+          .text(function(d) { return d.englishToDutch; });
       }
 
       // Get the data
