@@ -132,7 +132,7 @@ So, I helped out with a lot of thinking and doing research to retrieve the data 
 
 #### First D3 experience
 
-1. First, I sketched a quick design to show the data in a line graph. I figured lines would be easliy readable and a good starting point with D3.
+1. First, I sketched a quick design to show the data in a line graph. I figured lines would be easily readable and a good starting point with D3.
 
 ![data sketch](/images/datavisualisatie.png)
 
@@ -208,7 +208,7 @@ svg.selectAll(".dot")
 
 You're right. It doesn't! The data isn't correct and neither is the amount of english books. Heck, how can you have more english books translated to dutch books than english books in total? Turns out that not every book has an original language set. If it's not translated at all, it will only define the language variable, and not the original language variable. So I first changed the data code to do some more checks on retrieving the english books. It's solid now.
 
-The next thing that doesn't make sense is the use of lines. It's hard to understand and it's lying to us, because the endpoints go from year to year. If we want to know the amount of books from 2013 and 6 months in, the line will give us an amount, but that amount may be wrong. So... now what? What kind of chart is better to show our data. I looked through a page with a lot of different charts and I compared them with the data I have. Turns out that a bar chart with 2 bars, each representing the amount of books (translated and just english), is the easiest to read in the case of the data that I have.
+The next thing that doesn't make sense is the use of lines. It's hard to read and it's lying to us, because the endpoints go from year to year. If we want to know the amount of books from 2013 and 6 months in, the line will give us an amount, but that amount may be wrong. So... now what? What kind of chart is better to show our data. I looked through a page with a lot of different charts and I compared them with the data I have. Turns out that a bar chart with 2 bars, each representing the amount of books (translated and just english), is the easiest to read in my case.
 
 1. Basically, I have to adapt my current code and change the lines to bars. So, I first set a new xAsis range, I remove scaleTime and use scaleBand, and remove extent and use map to go through the years instead to set the xAsis scale of range. I also add some padding.
 
@@ -231,13 +231,13 @@ svg.selectAll(".bar")
 
 ![datavisualisatie bars](/images/data_bar.png)
 
-4. Good, and easier to read! The results are also based on 20000 books now. There are two things that we can change. Place the bars next to each other and add the specific amount on top of the bar, because you kind of have to make an estimation right now. Let's try to place them next to each other first. Turns out, we can just move one of the bars a little to the right with transform. since the bars are 18.4 pixels wide, we use that amount.
+4. Good, and easier to read! The results are also based on 20000 books now. There are two things that we can change: place the bars next to each other and add the specific amount on top of the bar, because you kind of have to make an estimation right now. Let's try to place them next to each other first. Turns out, we can just move one of the bars a little to the right with transform. since the bars are 18.4 pixels wide, we use that amount.
 
 ```javascript
 .attr("transform", "translate(18.4)")
 ```
 
-5. The bars are next to each other now, which only gives little room of seperation to the next two bars, so we have to add some more padding.
+5. The bars are next to each other now, which doesn't give a lot of breathing room to the next two bars, so we have to add some more padding.
 
 ```javascript
 let x = d3.scaleBand().range([0, width]).padding(.3)
@@ -252,6 +252,6 @@ It seems like that a general better knowledge of the english language in our cou
 
 *Please note that the results of this chart are based on 20000 random books. The results could be different if we would be able to widen the amount of books to all books, around 410000.*
 
-### Online datavisualisation
+### Online data visualization
 
-You can find the D3 datavisualisation online here: https://mennauu.github.io/functional-programming/
+You can find the D3 data visualization online here: https://mennauu.github.io/functional-programming/
