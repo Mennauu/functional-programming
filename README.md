@@ -231,10 +231,10 @@ svg.selectAll(".bar")
 
 ![datavisualisatie bars](/images/data_bar.png)
 
-4. Good, and easier to read! The results are also based on 20000 books now. There are two things that we can change: place the bars next to each other and add the specific amount on top of the bar, because you kind of have to make an estimation right now. Let's try to place them next to each other first. Turns out, we can just move one of the bars a little to the right with transform. since the bars are 18.4 pixels wide, we use that amount.
+4. Good, and easier to read! The results are also based on 20000 books now. There are two things that we can change: place the bars next to each other and add the specific amount on top of the bar, because you kind of have to make an estimation right now. Let's try to place them next to each other first. We can move one of the bars a little to the right with transform based on the width of the bar.
 
 ```javascript
-.attr("transform", "translate(18.4)")
+.attr("transform", "translate(" + x.bandwidth() / 2 + ")")
 ```
 
 5. The bars are next to each other now, which doesn't give a lot of breathing room to the next two bars, so we have to add some more padding.

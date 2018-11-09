@@ -64,18 +64,18 @@
           .attr("class", "text")
           .call(d3.axisLeft(y))
 
-        // add the bars
+        // add the bar
         svg.selectAll(".bar")
         	.data(data)
         	.enter().append("rect")
         	.attr("class", "bar")
         	.attr("x", function(d) { return x(d.year)})
         	.attr("y", function(d) { return y(d.english)})
-          .attr("transform", "translate(18.4)")
         	.attr("width", x.bandwidth() / 2)
         	.attr("height", function(d) { return height - y(d.english) })
+          .attr("transform", "translate(" + x.bandwidth() / 2 + ")")
 
-        // add the bars
+        // add the second bar
         svg.selectAll(".bar2")
           .data(data)
           .enter().append("rect")
